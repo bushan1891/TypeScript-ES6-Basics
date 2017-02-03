@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5", /* Transpilation target */
+    "module": "system",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "removeComments": false,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowJs": true
+  }
+}
