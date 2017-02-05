@@ -120,3 +120,125 @@ class Vehicle{
 let bmw = new Vehicle("3 Series");
 let val = bmw.testDrive();
 console.log(val);
+
+
+//access specifiers 
+// public private protected
+// readonly => means constant or final in java
+// static variable no need for instance of an object 
+
+
+class Parent {
+    private key: string;
+    private x: number;
+    public y: string;
+    protected z:string;
+
+    constructor(key:string, x:number, y:string, z:string) {
+        this.key = key;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    display(): void{
+        console.log("I am Parent! ", this.key, this.x, this.y, this.z);
+   } 
+
+}
+
+class child extends Parent{
+    constructor() {
+        super("test", 1, "hi", "how");
+        console.log(this.y, this.z); // can access public and protected methods 
+        //console.log(this.key); error variable is private 
+    }
+}
+
+let p: Parent = new Parent("test", 1, "hi", "how");
+console.log(p.y); // public can be used outside the class as well 
+//console.log(p.z, p.key); //can not be accessed outside the class 
+
+
+// abstract class
+abstract class Structure{
+    sayHi():void {
+        console.log("Hi, how are you doing!");
+    }
+    abstract display(): void;
+}
+
+// extend the abstract calss 
+
+class Home extends Structure{
+    // implementing the abstract methods 
+    display() {
+        console.log("I am implemented in home");
+    }
+
+    static sayHello():void {
+        console.log("Hello, i am a static method  "); 
+    }
+}
+
+Home.sayHello(); // no instance is requried 
+
+
+
+//Interfaces 
+
+interface Industry{
+    type: string;
+    location: string;
+    place?: string;
+}
+
+function func(test:Industry) {
+    
+}
+
+func({ type: "str", location: "str", place: "str" }); //valid 
+func({ type: "str", location: "str" }); //valid 
+//func({type:"str"}); //invalid 
+
+//interface
+interface Company{
+    (name:string,location:string):void;
+}
+
+let func1:Company = function (namwe:string,location:string) {
+    
+}
+
+// interface can have variables and they need not be final like in java  
+
+interface Wizardz {
+    spell: string;
+    magic: boolean;
+    castSpell(name: string, trick: string):void;
+}
+
+class Harry implements Wizardz{
+    spell: string;
+    magic: boolean;
+
+    constructor(spell: string, magic: boolean) {
+        this.spell=spell;
+        this.magic = magic;
+    }
+
+    castSpell(name:string,trick:string): void{
+        console.log(name +" :  " + trick);
+    }
+
+}
+
+let wiz = new Harry("Expecto potramo", true);
+wiz.castSpell(wiz.spell, "Makes the object fly");
+
+
+
+
+
+
+
